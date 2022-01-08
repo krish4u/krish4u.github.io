@@ -55,23 +55,11 @@
 
 			<div class="skill-chart">
 				<div id="chart">
-					<h6 class="heading heading--small heading--center">Skills / Timeline</h6>
 					<div class="chart--container">
-
-						<div class="company--year">
-							<span class="company--year-each id-smabes"> </span>
-							<span class="company--year-each id-smabes"> </span>
-							<span class="company--year-each id-smabes"> </span>
-							<span class="company--year-each id-idal"> </span>
-							<span class="company--year-each id-idal"> </span>
-							<span class="company--year-each id-idal"> </span>
-							<span class="company--year-each id-idal"> </span>
-							<span class="company--year-each id-mindtree"> </span>
-							<span class="company--year-each id-mindtree"> </span>
-							<span class="company--year-each id-mindtree"> </span>
-							<span class="company--year-each  id-mindtree"> </span>
-						</div>
-
+					
+						
+						<h2 class="heading heading--medium">Timeline</h2>
+						<!-- <div id="fixed-helper"> -->
 						<div class="chart--year">
 							<span class="chart--year-each chart--year-highlight id-smabes">2012</span>
 							<span class="chart--year-each id-smabes">2013</span>
@@ -85,7 +73,44 @@
 							<span class="chart--year-each id-mindtree">2021</span>
 							<span class="chart--year-each chart--year-highlight id-mindtree">2022</span>
 						</div>
+					<!-- </div> -->
 
+						<h2 class="heading heading--medium">Organizations</h2>
+						<div class="company--year">
+							<span class="company-smabes cursor-pointer">
+								<span 
+								data-name="smabes" 
+								data-joined="Jan 2012" 
+								data-left="Mar 2015" 
+								class="company-smabes--title id-company-trigger">
+									<i class="company-tooltip"><img src="/images/info.png" /></i>
+									SMABES SOLUTIONS
+								</span>
+							</span>
+							<span class="company-idal cursor-pointer">
+								
+								<span 
+								data-name="Intellect Design Arena" 
+								data-joined="Mar 2015" 
+								data-left="Aug 2019"  class="company-idal--title id-company-trigger">
+									<i class="company-tooltip"><img src="/images/info.png" /></i>
+									INTELLECT DESIGN ARENA
+								</span> 
+							</span>
+							<span class="company-mindtree cursor-pointer">
+								
+								<span 
+								data-name="Mindtree" 
+								data-joined="Aug 2019" 
+								data-left="Still Working"
+								class="company-mindtree--title id-company-trigger">
+									<i class="company-tooltip"><img src="/images/info.png" /></i>
+									MINDTREE
+								</span>
+							</span>
+						</div>
+
+						<h2 class="heading heading--medium">Skills / Expertise</h2>
 						<div class="skills--section">
 							<div class="skills--each skill-js">
 								<span class="skill-life">JavaScript</span>
@@ -159,9 +184,18 @@
 			<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 		<a href='https://www.freepik.com/vectors/design'>Design vector created by ajipebriana - www.freepik.com</a>
 		<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+		<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 		-->
 		<div>&copy;2022. All Rights Reserved. Created as part of learning excercise.</div>
 		</footer>
+		<div class="dyn-pop" style="display: none;">
+			<h2><span class="dyn-pop--name">Company Name</span><span id="dyn-pop-close">x</span></h2>
+			<div>
+				<p>Joined : <span class="dyn-pop--joined">NA</span></p>
+				<p>Left : <span class="dyn-pop--left">NA</span></p>
+			</div>
+		</div>
 		<!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 		<script>
 		var options = {
@@ -198,10 +232,79 @@
 		</script>
 
 		<script>
-			let finalCords;
-			const smabes = Array.from(document.querySelectorAll('.id-smabes'));
-			smabes.map((e) => finalCords = e.clientLeft)
-			console.log(finalCords);
+			const companyData = 
+				[
+					
+					{"smabes" : {
+						name : 'Smabes Solutions Pvt. Ltd',
+						Joined : "Jan 2012",
+						Left : "Mar 2015"
+					},
+				
+					intellect : {
+					name : 'Intellect Design Arena',
+					Joined : "Mar 2012",
+					Left : "Aug 2019"
+					},
+					mindtree : {
+					name : 'Mindtree',
+					Joined : "Aug 2019",
+					Left : "Still Working"
+					}}
+				];
+			const popupCont = document.querySelector('.dyn-pop');
+			const companyTrigger = document.querySelectorAll('.id-company-trigger');
+			//companyTrigger.forEach((e) => e.addEventListener('mouseenter', showPopup(e)))
+			companyTrigger.forEach(function(elem) { 
+				elem.addEventListener('mouseup',function(e){
+					//Get Clicked Company Details
+					const companyName = e.target.dataset.name;
+					const companyJoined = e.target.dataset.joined;
+					const companyLeft = e.target.dataset.left;
+					//Get Targets to attach company data
+					const toCompanyName = document.querySelector('.dyn-pop--name');
+					const toCompanyJoined = document.querySelector('.dyn-pop--joined');
+					const toCompanyLeft = document.querySelector('.dyn-pop--left');
+
+					//Position popup on particular co-ordinates
+					popupCont.style.left =( e.pageX-(e.offsetX/2))+'px';
+					popupCont.style.top = (e.pageY-e.offsetY-10)-105+'px';
+
+					//Made the popup visible
+					popupCont.style.display = 'block';
+					
+					//Attached company data into popup
+					toCompanyName.innerHTML = companyName;
+					toCompanyJoined.innerHTML = companyJoined;
+					toCompanyLeft.innerHTML = companyLeft;
+
+					//Closing PopUp
+					document.querySelector('#dyn-pop-close').addEventListener('click',function(){
+						document.querySelector('.dyn-pop').style.display="none";
+					});
+
+					//Debugging
+					// console.log(`offset-x:${e.offsetX}`);
+					// console.log(`page-x:${e.pageX}`);
+					// console.log('--------------------------');
+				});
+			})
 		</script>
+
+
+		<!-- <script>
+		//Keeping the year list sticky
+		const chartComp = document.querySelector('#fixed-helper');
+		const chartPos = document.querySelector('#fixed-helper').offsetTop;
+		
+		document.addEventListener('scroll',function(e){
+			console.log(parseInt(window.scrollY));
+			let currentPos = window.scrollY;
+			currentPos > chartPos ? chartComp.style.position = 'fixed' : chartComp.style.position = 'relative';
+			
+		});
+		</script> -->
+
+		
 	</body>
 	</html>  
