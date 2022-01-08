@@ -57,18 +57,33 @@
 				<div id="chart">
 					<h6 class="heading heading--small heading--center">Skills / Timeline</h6>
 					<div class="chart--container">
+
+						<div class="company--year">
+							<span class="company--year-each id-smabes"> </span>
+							<span class="company--year-each id-smabes"> </span>
+							<span class="company--year-each id-smabes"> </span>
+							<span class="company--year-each id-idal"> </span>
+							<span class="company--year-each id-idal"> </span>
+							<span class="company--year-each id-idal"> </span>
+							<span class="company--year-each id-idal"> </span>
+							<span class="company--year-each id-mindtree"> </span>
+							<span class="company--year-each id-mindtree"> </span>
+							<span class="company--year-each id-mindtree"> </span>
+							<span class="company--year-each  id-mindtree"> </span>
+						</div>
+
 						<div class="chart--year">
 							<span class="chart--year-each chart--year-highlight id-smabes">2012</span>
 							<span class="chart--year-each id-smabes">2013</span>
 							<span class="chart--year-each id-smabes">2014</span>
-							<span class="chart--year-each id-smabes">2015</span>
-							<span class="chart--year-each">2016</span>
-							<span class="chart--year-each chart--year-highlight">2017</span>
-							<span class="chart--year-each">2018</span>
-							<span class="chart--year-each">2019</span>
-							<span class="chart--year-each">2020</span>
-							<span class="chart--year-each">2021</span>
-							<span class="chart--year-each chart--year-highlight">2022</span>
+							<span class="chart--year-each id-idal">2015</span>
+							<span class="chart--year-each id-idal">2016</span>
+							<span class="chart--year-each chart--year-highlight id-idal">2017</span>
+							<span class="chart--year-each id-idal">2018</span>
+							<span class="chart--year-each id-mindtree">2019</span>
+							<span class="chart--year-each id-mindtree">2020</span>
+							<span class="chart--year-each id-mindtree">2021</span>
+							<span class="chart--year-each chart--year-highlight id-mindtree">2022</span>
 						</div>
 
 						<div class="skills--section">
@@ -183,9 +198,10 @@
 		</script>
 
 		<script>
-			const allYears = Array.from(document.querySelectorAll('.chart--year-each'));
-			
-			
+			let finalCords;
+			const smabes = Array.from(document.querySelectorAll('.id-smabes'));
+			smabes.map((e) => finalCords = e.clientLeft)
+			console.log(finalCords);
 		</script>
 	</body>
 	</html>  

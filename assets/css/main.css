@@ -392,6 +392,7 @@ body {
     margin-bottom: 2em;
     padding-bottom: 2em;
     padding-top: 2em;
+    overflow: hidden;
 }
 
 .chart--year-each.chart--year-highlight {
@@ -606,3 +607,85 @@ footer {
     }
  
  }
+
+ .company--year {
+    top: -10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ .company--year-each {
+    display: inline-block;
+    min-width: 45px;
+    height: 5px;
+    position: relative;
+}
+.company--year-each::after {
+   content: '';
+   position: absolute;
+   width: 58px;
+   background: #ffa500;
+   right: -56px;
+   top: 0;
+   height: 5px;
+   display: block;
+}
+
+
+
+.company--year-each.id-smabes, .company--year-each.id-smabes::after {
+    background: #910404;
+}
+
+.company--year-each.id-idal, .company--year-each.id-idal::after {
+    background: #ffc107;
+}
+
+.company--year-each.id-mindtree, .company--year-each.id-mindtree::after {
+    background: #607d8b;
+}
+
+.company--year-each.id-smabes:first-child::before {
+    content:'';
+    position: absolute;
+    top: -15px;
+    left: 2px;
+    height: 20px;
+    width: 2px;
+    background: #9C27B0;
+   
+}
+
+.company--year-each.id-smabes:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: -47px;
+    height: 20px;
+    width: 2px;
+    background: #910404;
+}
+
+
+.company--year-each.id-idal:first-child::before {
+    content:'';
+    position: absolute;
+    top: -15px;
+    left: 2px;
+    height: 20px;
+    width: 2px;
+    background: #9C27B0;
+   
+}
+
+.company--year-each.id-idal:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: -47px;
+    height: 20px;
+    width: 2px;
+    background: #910404;
+}
